@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="hoho">
+
+	
+	
+	<insert id="insert" parameterType="bookvo">
+	INSERT INTO BOOK (BOOKNUM,BOOKNAME,WRITER,PUBLISHER,PRICE,IMAGE,INTRODUCE)
+	VALUES (#{booknum},#{bookname},#{writer},#{publisher},#{price},#{image},#{introduce})
+	</insert>
+
+	<select id="list" resultType="bookvo">
+	SELECT * FROM book ORDER BY booknum
+	</select>
+	
+	<select id="read" parameterType="Long" resultType="bookvo">
+	SELECT * FROM book WHERE booknum = #{booknum}
+	</select>
+	
+	<delete id="delete" parameterType="Long">
+	DELETE FROM BOOK WHERE booknum = #{booknum}
+	</delete>
+		
+	<update id="update" parameterType="bookvo">
+	UPDATE book SET  bookname = #{bookname},writer = #{writer}, publisher = #{publisher},
+	 price = #{price}, introduce = #{introduce} WHERE booknum = #{booknum}
+	</update>
+	
+	
+</mapper>
